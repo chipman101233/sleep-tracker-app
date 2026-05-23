@@ -205,3 +205,42 @@ function clearAllData() {
         alert('All data cleared!');
     }
 }
+// Navigation: Go to a specific app section from Home Screen
+function goToSection(sectionId) {
+    // Hide the home screen
+    document.getElementById('homeScreen').classList.add('hidden');
+    
+    // Show the main app container
+    document.getElementById('mainApp').classList.remove('hidden');
+    
+    // Hide all individual content sections first
+    const sections = ['scheduleSection', 'logSection', 'historySection', 'statsSection'];
+    sections.forEach(id => {
+        document.getElementById(id).classList.add('hidden');
+    });
+    
+    // Show the one that was clicked and update the title header
+    const titleElement = document.getElementById('sectionTitle');
+    if (sectionId === 'schedule') {
+        document.getElementById('scheduleSection').classList.remove('hidden');
+        titleElement.textContent = 'Sleep Schedule';
+    } else if (sectionId === 'log') {
+        document.getElementById('logSection').classList.remove('hidden');
+        titleElement.textContent = 'Log Sleep';
+    } else if (sectionId === 'history') {
+        document.getElementById('historySection').classList.remove('hidden');
+        titleElement.textContent = 'Sleep History';
+    } else if (sectionId === 'stats') {
+        document.getElementById('statsSection').classList.remove('hidden');
+        titleElement.textContent = 'Progress & Statistics';
+    }
+}
+
+// Navigation: Go back to the Home Screen menu
+function goHome() {
+    // Hide the main app wrapper
+    document.getElementById('mainApp').classList.add('hidden');
+    
+    // Reveal the main dashboard home menu
+    document.getElementById('homeScreen').classList.remove('hidden');
+}

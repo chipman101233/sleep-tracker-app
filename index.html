@@ -7,95 +7,118 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>😴 Sleep Tracker App</h1>
-        
-        <!-- Create Sleep Schedule Section -->
-        <div class="section">
-            <h2>Create Sleep Schedule</h2>
-            <div class="form-group">
-                <label for="bedtime">Bedtime:</label>
-                <input type="time" id="bedtime" placeholder="Enter bedtime">
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="logo">😴</div>
+            <div class="loading-text">
+                <span class="decorative-item left">⭐</span>
+                Sleep Tracker App
+                <span class="decorative-item right">🌙</span>
             </div>
-            <div class="form-group">
-                <label for="wakeup">Wake-up Time:</label>
-                <input type="time" id="wakeup" placeholder="Enter wake-up time">
-            </div>
-            <button onclick="createSchedule()">Create Schedule</button>
-        </div>
-
-        <!-- Display Current Schedule -->
-        <div class="section">
-            <h2>Your Sleep Schedule</h2>
-            <div id="scheduleDisplay" class="schedule-box">
-                <p>No schedule created yet. Create one above!</p>
+            <div class="decorative-clouds">
+                <span class="cloud left-cloud">☁️</span>
+                <span class="cloud right-cloud">☁️</span>
+                <span class="star star1">⭐</span>
+                <span class="star star2">✨</span>
+                <span class="moon moon1">🌙</span>
+                <span class="moon moon2">🌙</span>
             </div>
         </div>
+    </div>
 
-        <!-- Log Sleep Entry -->
-        <div class="section">
-            <h2>Log Sleep Entry</h2>
-            <div class="form-group">
-                <label for="sleepDate">Date:</label>
-                <input type="date" id="sleepDate">
-            </div>
-            <div class="form-group">
-                <label for="bedtimeLog">Bedtime:</label>
-                <input type="time" id="bedtimeLog">
-            </div>
-            <div class="form-group">
-                <label for="waketimeLog">Wake-up Time:</label>
-                <input type="time" id="waketimeLog">
-            </div>
-            <div class="form-group">
-                <label for="quality">Sleep Quality (1-10):</label>
-                <input type="number" id="quality" min="1" max="10" placeholder="Rate your sleep">
-            </div>
-            <button onclick="logSleep()">Log Sleep</button>
-        </div>
-
-        <!-- Sleep History -->
-        <div class="section">
-            <h2>Sleep History</h2>
-            <table id="sleepHistory" class="history-table">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Bedtime</th>
-                        <th>Wake-up Time</th>
-                        <th>Duration</th>
-                        <th>Quality</th>
-                    </tr>
-                </thead>
-                <tbody id="historyBody">
-                    <!-- Sleep entries will appear here -->
-                </tbody>
-            </table>
-            <p id="noHistory" class="no-data">No sleep entries yet. Log some sleep above!</p>
-        </div>
-
-        <!-- Sleep Statistics -->
-        <div class="section">
-            <h2>Sleep Statistics</h2>
-            <div class="stats-grid">
-                <div class="stat-box">
-                    <p>Average Sleep Duration</p>
-                    <h3 id="avgDuration">0h 0m</h3>
+    <!-- Main App Content -->
+    <div id="mainApp" class="main-app hidden">
+        <div class="container">
+            <h1>😴 Sleep Tracker App</h1>
+            
+            <!-- Create Sleep Schedule Section -->
+            <div class="section">
+                <h2>Create Sleep Schedule</h2>
+                <div class="form-group">
+                    <label for="bedtime">Bedtime:</label>
+                    <input type="time" id="bedtime" placeholder="Enter bedtime">
                 </div>
-                <div class="stat-box">
-                    <p>Average Sleep Quality</p>
-                    <h3 id="avgQuality">0/10</h3>
+                <div class="form-group">
+                    <label for="wakeup">Wake-up Time:</label>
+                    <input type="time" id="wakeup" placeholder="Enter wake-up time">
                 </div>
-                <div class="stat-box">
-                    <p>Total Sleep Entries</p>
-                    <h3 id="totalEntries">0</h3>
+                <button onclick="createSchedule()">Create Schedule</button>
+            </div>
+
+            <!-- Display Current Schedule -->
+            <div class="section">
+                <h2>Your Sleep Schedule</h2>
+                <div id="scheduleDisplay" class="schedule-box">
+                    <p>No schedule created yet. Create one above!</p>
                 </div>
             </div>
-        </div>
 
-        <!-- Clear All Data -->
-        <div class="section">
-            <button class="clear-btn" onclick="clearAllData()">Clear All Data</button>
+            <!-- Log Sleep Entry -->
+            <div class="section">
+                <h2>Log Sleep Entry</h2>
+                <div class="form-group">
+                    <label for="sleepDate">Date:</label>
+                    <input type="date" id="sleepDate">
+                </div>
+                <div class="form-group">
+                    <label for="bedtimeLog">Bedtime:</label>
+                    <input type="time" id="bedtimeLog">
+                </div>
+                <div class="form-group">
+                    <label for="waketimeLog">Wake-up Time:</label>
+                    <input type="time" id="waketimeLog">
+                </div>
+                <div class="form-group">
+                    <label for="quality">Sleep Quality (1-10):</label>
+                    <input type="number" id="quality" min="1" max="10" placeholder="Rate your sleep">
+                </div>
+                <button onclick="logSleep()">Log Sleep</button>
+            </div>
+
+            <!-- Sleep History -->
+            <div class="section">
+                <h2>Sleep History</h2>
+                <table id="sleepHistory" class="history-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Bedtime</th>
+                            <th>Wake-up Time</th>
+                            <th>Duration</th>
+                            <th>Quality</th>
+                        </tr>
+                    </thead>
+                    <tbody id="historyBody">
+                        <!-- Sleep entries will appear here -->
+                    </tbody>
+                </table>
+                <p id="noHistory" class="no-data">No sleep entries yet. Log some sleep above!</p>
+            </div>
+
+            <!-- Sleep Statistics -->
+            <div class="section">
+                <h2>Sleep Statistics</h2>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <p>Average Sleep Duration</p>
+                        <h3 id="avgDuration">0h 0m</h3>
+                    </div>
+                    <div class="stat-box">
+                        <p>Average Sleep Quality</p>
+                        <h3 id="avgQuality">0/10</h3>
+                    </div>
+                    <div class="stat-box">
+                        <p>Total Sleep Entries</p>
+                        <h3 id="totalEntries">0</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clear All Data -->
+            <div class="section">
+                <button class="clear-btn" onclick="clearAllData()">Clear All Data</button>
+            </div>
         </div>
     </div>
 

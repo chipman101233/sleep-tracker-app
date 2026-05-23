@@ -1,3 +1,22 @@
+// Handle loading screen
+window.addEventListener('DOMContentLoaded', function() {
+    // Hide loading screen after 2 seconds
+    setTimeout(function() {
+        const loadingScreen = document.getElementById('loadingScreen');
+        const mainApp = document.getElementById('mainApp');
+        
+        loadingScreen.style.display = 'none';
+        mainApp.classList.remove('hidden');
+        
+        // Initialize app
+        initializeData();
+        setDefaultDate();
+        displaySchedule();
+        displaySleepHistory();
+        updateStatistics();
+    }, 2000);
+});
+
 // Initialize localStorage with empty data if it doesn't exist
 function initializeData() {
     if (!localStorage.getItem('sleepSchedule')) {
@@ -186,12 +205,3 @@ function clearAllData() {
         alert('All data cleared!');
     }
 }
-
-// Initialize app on page load
-window.addEventListener('DOMContentLoaded', function() {
-    initializeData();
-    setDefaultDate();
-    displaySchedule();
-    displaySleepHistory();
-    updateStatistics();
-});

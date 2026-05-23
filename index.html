@@ -27,13 +27,53 @@
         </div>
     </div>
 
+    <!-- Home Screen -->
+    <div id="homeScreen" class="home-screen hidden">
+        <div class="home-container">
+            <!-- Logo -->
+            <div class="home-logo">😴</div>
+            <h1 class="home-title">Sleep Tracker</h1>
+
+            <!-- Main Info Box -->
+            <div class="main-info-box">
+                <div id="mainInfoContent" class="info-content">
+                    <p class="welcome-text">Welcome to Your Sleep Tracker!</p>
+                    <p class="info-text">Set up your sleep schedule and start tracking your sleep to see your progress.</p>
+                </div>
+            </div>
+
+            <!-- Navigation Boxes -->
+            <div class="nav-grid">
+                <div class="nav-box nav-box-blue" onclick="goToSection('schedule')">
+                    <span class="nav-icon">📅</span>
+                    <p>Create Sleep Schedule</p>
+                </div>
+                <div class="nav-box nav-box-purple" onclick="goToSection('log')">
+                    <span class="nav-icon">📝</span>
+                    <p>Log Sleep Entry</p>
+                </div>
+                <div class="nav-box nav-box-pink" onclick="goToSection('history')">
+                    <span class="nav-icon">📊</span>
+                    <p>Sleep History</p>
+                </div>
+                <div class="nav-box nav-box-blue" onclick="goToSection('stats')">
+                    <span class="nav-icon">📈</span>
+                    <p>Progress & Stats</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Main App Content -->
     <div id="mainApp" class="main-app hidden">
+        <div class="app-header">
+            <button class="back-btn" onclick="goHome()">← Home</button>
+            <h1 id="sectionTitle">Sleep Tracker App</h1>
+        </div>
+
         <div class="container">
-            <h1>😴 Sleep Tracker App</h1>
-            
             <!-- Create Sleep Schedule Section -->
-            <div class="section">
+            <div id="scheduleSection" class="section hidden">
                 <h2>Create Sleep Schedule</h2>
                 <div class="form-group">
                     <label for="bedtime">Bedtime:</label>
@@ -44,18 +84,15 @@
                     <input type="time" id="wakeup" placeholder="Enter wake-up time">
                 </div>
                 <button onclick="createSchedule()">Create Schedule</button>
-            </div>
-
-            <!-- Display Current Schedule -->
-            <div class="section">
-                <h2>Your Sleep Schedule</h2>
+                
+                <h3 style="margin-top: 30px;">Your Current Schedule</h3>
                 <div id="scheduleDisplay" class="schedule-box">
                     <p>No schedule created yet. Create one above!</p>
                 </div>
             </div>
 
-            <!-- Log Sleep Entry -->
-            <div class="section">
+            <!-- Log Sleep Entry Section -->
+            <div id="logSection" class="section hidden">
                 <h2>Log Sleep Entry</h2>
                 <div class="form-group">
                     <label for="sleepDate">Date:</label>
@@ -76,8 +113,8 @@
                 <button onclick="logSleep()">Log Sleep</button>
             </div>
 
-            <!-- Sleep History -->
-            <div class="section">
+            <!-- Sleep History Section -->
+            <div id="historySection" class="section hidden">
                 <h2>Sleep History</h2>
                 <table id="sleepHistory" class="history-table">
                     <thead>
@@ -96,9 +133,9 @@
                 <p id="noHistory" class="no-data">No sleep entries yet. Log some sleep above!</p>
             </div>
 
-            <!-- Sleep Statistics -->
-            <div class="section">
-                <h2>Sleep Statistics</h2>
+            <!-- Sleep Statistics Section -->
+            <div id="statsSection" class="section hidden">
+                <h2>Progress & Statistics</h2>
                 <div class="stats-grid">
                     <div class="stat-box">
                         <p>Average Sleep Duration</p>
@@ -113,11 +150,7 @@
                         <h3 id="totalEntries">0</h3>
                     </div>
                 </div>
-            </div>
-
-            <!-- Clear All Data -->
-            <div class="section">
-                <button class="clear-btn" onclick="clearAllData()">Clear All Data</button>
+                <button class="clear-btn" onclick="clearAllData()" style="margin-top: 30px;">Clear All Data</button>
             </div>
         </div>
     </div>
